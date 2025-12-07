@@ -77,3 +77,7 @@ build/
 ~$*
 #not ready
 afl-team-builder
+
+#Ignore Prompts
+Prompt*.txt
+*.bak
