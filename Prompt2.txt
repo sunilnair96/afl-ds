@@ -1,0 +1,126 @@
+Can you build python code based on teh below information
+Output Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data
+
+src code folder : C:\Users\sunil\Projects\2026ws\afl-ds\src
+Give appropriate file name
+
+
+# Define the seasons and teams
+seasons = [2022, 2023, 2024]
+teams = ["ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS", "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"]
+
+
+Teams = ["ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS", "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"]
+
+Visit https://dfsaustralia.com/afl-results/?season=2025
+
+The season will be a variable initial value = 2025
+
+This gives results of each game,
+
+The Output I need is  in Round, Home, HomeScore, Away, AwayScore
+
+Then for each team and each season get player stats
+
+   url = f"https://dfsaustralia.com/afl-fantasy-points/?team={team}&season={season}"
+
+From  this url i need the following table as output.
+The columns 0 to 28 represents the round
+The site provides the image of team. 
+if you replace the image to Teams that will be nice.
+Otherwise you can use the results page to understand who was the opponent for that team in that season for that round.
+PLAYER
+AVG
+ADJ
+100
+120
+PPM
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+Note : To fecth data from dfs, selenium is required
+Old Code :
+# Define the seasons and teams
+seasons = [2022, 2023, 2024]
+teams = ["ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS", "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"]
+
+# Create a directory to save the data files if it doesn't exist
+output_dir = 'data'
+os.makedirs(output_dir, exist_ok=True)
+
+for season in seasons:
+    for team in teams:
+        # Generate the URL based on the current season and team
+        url = f"https://dfsaustralia.com/afl-fantasy-points/?team={team}&season={season}"
+
+        # Load the page using Selenium
+        driver.get(url)
+
+        # Wait for the page to load completely (you might need to adjust the wait time)
+        time.sleep(5)
+
+        # Get the page source after it is fully loaded
+        page_source = driver.page_source
+
+        # Parse the page source with BeautifulSoup
+        soup = BeautifulSoup(page_source, 'html.parser')
+
+        # Find the table with id="fantasyPoints"
+        table = soup.find('table', {'id': 'fantasyPoints'})
+
+        # Check if the table is found
+        if table:
+            # Get the headers from the <thead>
+            headers = [header.text.strip() for header in table.find_all('th')]
+
+            # Get the <tbody> and rows within it
+            tbody = table.find('tbody')
+            rows = []
+            if tbody:
+                for row in tbody.find_all('tr'):
+                    # Get the text from each cell in the row and strip extra whitespace
+                    cells = [cell.text.strip() for cell in row.find_all('td')]
+                    rows.append(cells)
+
+                # Create a DataFrame with the collected headers and rows
+                df = pd.DataFrame(rows, columns=headers)
+
+                # Save the DataFrame to an Excel file in the specified format
+                output_file = os.path.join(output_dir, f'afl_fantasy_points_{season}_{team}.xlsx')
+                df.to_excel(output_file, index=False)
+
+                print(f"Table for season {season} and team {team} scraped and saved as {output_file}.")
+            else:
+                print(f"No <tbody> found in the table for season {season} and team {team}.")
+        else:
+            print(f"Table with id 'fantasyPoints' not found for season {season} and team {team}.")
+
+# Close the Selenium browser
+driver.quit()

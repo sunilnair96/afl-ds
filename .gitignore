@@ -1,0 +1,79 @@
+﻿###############################
+# Python Virtual Environments
+###############################
+.venv/
+venv/
+env/
+ENV/
+
+###############################
+# Python Cache
+###############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyd
+*.egg-info/
+*.egg
+
+###############################
+# Environment Files / Secrets
+###############################
+.env
+*.env
+
+###############################
+# IDE & Editor Files
+###############################
+# VSCode
+.vscode/
+.code-workspace
+
+# PyCharm
+.idea/
+
+###############################
+# OS Files
+###############################
+.DS_Store
+Thumbs.db
+
+###############################
+# Streamlit Cache
+###############################
+.streamlit/
+
+###############################
+# Logs
+###############################
+*.log
+
+###############################
+# Data — DO NOT COMMIT REAL DATA
+###############################
+data/raw/
+data/processed/
+data/versions/
+data/downloads/
+*.xlsx
+*.xlsm
+*.xls
+
+# If you want to commit specific Excel templates,
+# then remove this section and manually whitelist files.
+
+###############################
+# Node / Frontend (Future-Proof)
+###############################
+node_modules/
+dist/
+build/
+
+###############################
+# Temporary / Unknown
+###############################
+*.tmp
+~$*
+#not ready
+afl-team-builder

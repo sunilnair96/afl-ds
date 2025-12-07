@@ -1,0 +1,9 @@
+I need to crate a local applications for my use and learning. I have an excel file which has all afl player list for season 2026. I have their projected scores for each round. Using this spreadsheet, I want to build an application using which I can Maintain the Projected Scores. Using the Projected Scores and their Starting Price, I want to build a Starting team under salary cap of 17.8 Million. The starting price for this execrsie will be pricedat *Multiplied by 10250 rund to nearest hundred.
+As I update my projection, I want the application to build a starting team which optimises the score for next 3 rounds.
+Once I am satisfied, I want to save that version of the team and projection.
+The UI must be able to filter players based on age, team, position, price range.
+I must also be able to make the player, so that I can include/exclude from projection and team building.
+The file has following columns. The DO column is in DD/MM/YYYY format. The first 14 columns are fixed and will remain contstant. So this can be used as a Master table.
+The columns Round 0 through Round 24 , represents round of the season.
+The competetion starts from Round 1. Round 0 scoe is considered and their price will change after round 1 based on the score. But round 0 score is not considered for the point scoring.
+I have uploaded the file that will be my main input

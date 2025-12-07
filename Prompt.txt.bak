@@ -1,0 +1,36 @@
+Project Folder : C:\Users\sunil\Projects\2026ws\afl-ds
+Source Code  C:\Users\sunil\Projects\2026ws\afl-ds\src
+Input Data Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data\raw
+OutputData Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data\processed
+
+Input FileName :  2026AflFantasyShortList.xlsx
+Ouputfile : 2026AflFantasyTeam.xlsx
+
+Columns in Sheet1
+Player
+Team
+Position
+Priced At
+Projection
+Price
+R0
+StartValue
+
+Required Columns for Processing
+Player
+Team
+Position
+Projection
+Price
+
+
+Build  a Python code to read dat from Input file and build build optimal fantsy team for 2026.
+Place the output file in Output Folder
+
+you must select a starting line-up of 22 Players (6 Defenders, 8 Midfielders, 2 Rucks, 6 Forwards). 
+The team will have 2 Defenders, 3 Midfielders, 1 Ruck and 2 Forwards in bench.
+The player in bench do not score point but they need to be cash cows.
+Captain will score dounle points
+Team must have at least 4 options 
+
+Salary cap is $17,800,000

@@ -1,0 +1,67 @@
+Can you build python code based on teh below information
+Output Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data
+
+src code folder : C:\Users\sunil\Projects\2026ws\afl-ds\src
+Give appropriate file name
+
+
+# Define the seasons and teams
+seasons = [2022, 2023, 2024]
+teams = ["ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS", "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"]
+
+
+Teams = ["ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS", "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"]
+
+Visit https://dfsaustralia.com/afl-results/?season=2025
+
+The season will be a variable initial value = 2025
+
+This gives results of each game,
+
+The Output I need is  in Round, Home, HomeScore, Away, AwayScore
+
+Then for each team and each season get player stats
+
+   url = f"https://dfsaustralia.com/afl-fantasy-points/?team={team}&season={season}"
+
+From  this url i need the following table as output.
+The columns 0 to 28 represents the round
+The site provides the image of team. 
+if you replace the image to Teams that will be nice.
+Otherwise you can use the results page to understand who was the opponent for that team in that season for that round.
+PLAYER
+AVG
+ADJ
+100
+120
+PPM
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+I will upload samp

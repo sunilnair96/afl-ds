@@ -1,0 +1,46 @@
+Create a new Python code to do the following
+
+The output file will be written to :
+C:\Users\sunil\Projects\2026ws\afl-ds\data\raw
+File name fixture_2026.xlsx
+
+Downnd load fixture for 2026 from https://www.footywire.com/afl/footy/ft_match_list?year=2026
+map the full name of teams to 
+TEAMS = [
+    "ADE", "BRL", "CAR", "COL", "ESS", "FRE", "GCS", "GEE", "GWS",
+    "HAW", "MEL", "NTH", "PTA", "RIC", "STK", "SYD", "WBD", "WCE"
+]
+
+The fixture appears like below
+
+
+Round 0
+ Date	Home v Away Teams	Venue	Crowd	Result	Disposals	Goals
+ Thu 5 Mar 7:30pm	Sydney v Carlton	SCG			 	 
+ Fri 6 Mar 7:05pm	Gold Coast v Geelong	People First Stadium			 	 
+ Sat 7 Mar 4:15pm	GWS v Hawthorn	ENGIE Stadium			 	 
+ Sat 7 Mar 6:35pm	Brisbane v Western Bulldogs	Gabba			 	 
+ Sun 8 Mar 7:20pm	St Kilda v Collingwood	MCG			 	 
+Round 1
+ Date	Home v Away Teams	Venue	Crowd	Result	Disposals	Goals
+ Thu 12 Mar 7:30pm	Carlton v Richmond	MCG			 	 
+ Fri 13 Mar 7:40pm	Essendon v Hawthorn	MCG			 	 
+ Sat 14 Mar 1:15pm	Western Bulldogs v GWS	Marvel Stadium			 	 
+ Sat 14 Mar 4:15pm	Geelong v Fremantle	GMHBA Stadium			 	 
+ Sat 14 Mar 7:10pm	Sydney v Brisbane	SCG			 	 
+ Sat 14 Mar 7:35pm	Collingwood v Adelaide	MCG			 	 
+ Sun 15 Mar 1:10pm	North Melbourne v Port Adelaide	Marvel Stadium			 	 
+ Sun 15 Mar 3:15pm	Melbourne v St Kilda	MCG			 	 
+ Sun 15 Mar 5:10pm	Gold Coast v West Coast	People First Stadium			 	 
+Round 2
+
+
+The outout should have following columns
+
+Round	Home 	Away
+
+For example
+
+Round	Home 	Away
+0		SYD		CAR
+0		GCS		GEE

@@ -1,0 +1,54 @@
+summarise and create a Readme rich text document the steps we covered today
+1. Execute fetch_dfs_data
+
+OUTPUT_DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\dfs"
+
+Output file afl_results_{season}.xlsx, and afl_fantasy_points_{season}_{team}.xlsx
+scrapes data from dfs australia site to get fixture/results and fantasy points for each player scored in each round
+
+2. Execute build_player_summary
+OUTPUT_FILE = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw\afl_fantasy_player_summary.xlsx"
+
+Reads all files like afl_fantasy_points_*.xlsx" in C:\Users\sunil\Projects\2026ws\afl-ds\data\dfs"
+and craetes a summary file for each player showing their average score against Each Team
+
+3. Execute build_fixture_2026 to get current season fixture from footywire
+OUTPUT_PATH = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw\fixture_2026.xlsx"
+
+4. Execute build_player_summary 
+OUTPUT_FILE = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw\afl_fantasy_player_summary.xlsx"
+
+5. Execute build_roundwise_projection 
+OUTPUT_DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\processed"
+OUTPUT_FILE = "afl_fantasy_player_summary_2026.xlsx"
+
+Inputs :
+POSITIONS_FILE = "Positions2026withAvgs.xlsx"            # master list of all players
+SUMMARY_FILE = "afl_fantasy_player_summary.xlsx"         # per-player vs-opponent averages
+FIXTURE_FILE = "fixture_2026.xlsx"                       # fixture with Round, Home, Away
+
+InputDirectory
+RAW_DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw"
+
+POSITIONS_FILE is downloaded from Patreon site which gives me all current players for the season, their date of birth, 
+priced at, last 3 years average.
+
+This becomes master list for all the next steps.
+Join the  3 files and create afl_fantasy_player_summary_2026.xlsx
+This will now have projected score for each round in the current seasonbased on the avg score against their opponents
+
+6. Execute build_player_ceiling .
+Output OUTPUT_FILE = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw\afl_fantasy_player_summary_ceiling.xlsx"
+This is similar to build_player_summary, but instea dof average we take the avearge of thier 2 best score against the opponent.
+
+7. Excute build_roundwise_ceiling.py. This is similar to  build_roundwise_projection. The only difference is it based on 
+the avg of 2 best scores against the opponent. This is more optimistic.
+RAW_DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\raw"
+OUTPUT_DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\processed"
+OUTPUT_FILE = "afl_fantasy_player_ceiling_2026.xlsx"
+
+POSITIONS_FILE = "Positions2026withAvgs.xlsx"            # master list of all players
+SUMMARY_FILE = "afl_fantasy_player_summary_ceiling.xlsx"         # per-player vs-opponent averages
+FIXTURE_FILE = "fixture_2026.xlsx"                       # fixture with Round, Home, Away
+
+

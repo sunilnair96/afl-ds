@@ -1,0 +1,7 @@
+Can you make following changes. The Column names for projected scores are round 1, round 2, round 3, round 4 (projected scores). 
+It is all lower case. Can you add another condition Player on before cutOffDate are excluded. 
+The cutOffDate will be set to 01/11/1993 for this year.
+ The projected score of Players over 30, can be reduced by 2 for each round, If the Player has played over 10 games in GMS-2025, GMS-2024, GMS-2023 then follow the trends of AVG-2025, AVG-2024, AVG-2023 
+ If the average has been increasing each year from 2023 to 2024 to 2025 then add bonus 2 point per round. 
+ If the average has been decreasing each year, the deduct 3 point per round. 
+ For the player born after 01/11/2022 risingStarDate and total GMS-2025, GMS-2024, GMS-2023 over 30 add 5 points per round

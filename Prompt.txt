@@ -1,0 +1,63 @@
+Project Folder : C:\Users\sunil\Projects\2026ws\afl-ds
+Source Code  C:\Users\sunil\Projects\2026ws\afl-ds\src
+Input Data Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data\raw
+OutputData Folder : C:\Users\sunil\Projects\2026ws\afl-ds\data\processed
+
+Input FileName :  2026AflFantasyShortList.xlsx
+Ouputfile : 2026AflFantasyTeam.xlsx
+
+Columns in Sheet1
+Player
+Team
+Position
+Priced At
+Projection
+Price
+R0
+StartValue
+
+Required Columns for Processing
+Player
+Team
+Position
+Projection
+Price
+
+
+Build  a Python code to read dat from Input file and build build optimal fantsy team for 2026.
+Place the output file in Output Folder
+
+you must select a starting line-up of 22 Players (6 Defenders, 8 Midfielders, 2 Rucks, 6 Forwards). 
+The team will have 2 Defenders, 3 Midfielders, 1 Ruck and 2 Forwards in bench.
+The player in bench do not score point but they need to be cash cows.
+Captain will score dounle points
+Team must have at least 4 options 
+
+Salary cap is $17,800,000
+
+Here’s a complete Python script you can drop into your src folder (e.g. C:\Users\sunil\Projects\2026ws\afl-ds\src\build_optimal_team.py) to:
+
+Read 2026AflFantasyShortList.xlsx from data\raw
+
+Build an optimal 30-player squad:
+
+22 starters: 6 DEF, 8 MID, 2 RUC, 6 FWD
+
+8 bench: 2 DEF, 3 MID, 1 RUC, 2 FWD
+
+Salary cap: $17,800,000
+
+Bench players don’t score; they are selected to be cheap “cash cows”
+
+One captain (must be a starter) whose points are doubled
+
+At least 4 different AFL teams represented in the squad (my interpretation of “team must have at least 4 options” – you can change this if needed)
+
+Save output as 2026AflFantasyTeam.xlsx into data\processed
+
+It also supports DPP (e.g. DEF/MID) if your Position column has slashes.
+
+Dependencies:
+pandas, openpyxl, pulp
+Install (once) with:
+pip install pandas openpyxl pulp

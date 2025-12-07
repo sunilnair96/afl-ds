@@ -1,0 +1,28 @@
+Create a new Python code to do the following
+
+The output file will be written to :
+Ouput Directory:  C:\Users\sunil\Projects\2026ws\afl-ds\data\processed
+Output file : afl_fantasy_player_summary_2026.xlsx
+
+Input Directory : C:\Users\sunil\Projects\2026ws\afl-ds\data\raw
+Input Files : Positions2026withAvgs  Sheet Positions 2025 with Avgs
+Input files : afl_fantasy_player_summary
+Input file : fixture_2026
+
+The file Positions2026withAvgs is the master file which has all the players for 2026 Season
+
+afl_fantasy_player_summary has avearges aginst opponent for each player based on thier last performance. This available in column name = team name
+
+fixture_2026 gives the team and opponent
+
+Join Positions2026withAvgs with afl_fantasy_player_summary.
+keep all columns from Positions2026withAvgs 
+Then add following columns avg	adj	avg(100)	avg(120)	avg(ppm) 
+from afl_fantasy_player_summary
+Then using Team column of Positions2026withAvgs get the Opponent for each round from fixture_2026.
+Using this populate columns round 0 to round 24. 
+if the team is not playing, then the value for that will be 0.
+Based on the Opponent get the value from the Team Name in afl_fantasy_player_summary
+
+I will atach the sample input files.
+

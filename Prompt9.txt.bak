@@ -1,0 +1,25 @@
+Write Python code to
+code name reformat_roundwise_ceiling_proj.py
+DIR = r"C:\Users\sunil\Projects\2026ws\afl-ds\data\processed"
+INPUT_FILE = "afl_fantasy_roundwise_projection_2026.xslx"
+INPUT_FILE = "MagicNumber.xlsx"
+
+OUTPUT_FILE = "afl_fantasy_206_price_projection.xlsx"
+
+The Input File MagicNumber.xlsx gives predicted magic number for each round.
+The Starting Salary is calculated as multiplying Priced At Column with Magic Number of Round 0.
+The Input file has the predicted round score for each player
+The column names are round 0, round 1 and so on till round 24.
+
+If the score of the layer in round is 0 means that player has not played that round.
+
+Based on teh below information, device a formula to calculate the price after each round.
+The price of all player does chnage after round 0.
+It only starts changing from round 1.
+
+
+Break-Even = (Current Price – Starting Price) / (Magic Number) + Current Round Average
+
+Using these information, calculate the expected price for each player, starting from round 2.
+Append these columns to the input file afl_fantasy_roundwise_projection_2026.xslx
+and create  the outfile afl_fantasy_206_price_projection.xlsx

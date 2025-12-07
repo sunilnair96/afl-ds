@@ -1,0 +1,221 @@
+Understood — no Kotlin, no irrelevant languages.
+Here is a **clean, GitHub-ready `README.md`** written specifically for your **Python-only AFL Fantasy 2026 data pipeline**.
+
+---
+
+# **AFL Fantasy 2026 – Data Pipeline**
+
+This repository contains the full automated workflow for generating **AFL Fantasy player projections** and **ceiling projections** for the 2026 AFL season.
+All components are written in **Python**, and the pipeline processes raw DFS and FootyWire data into **round-by-round player projections**.
+
+---
+
+## **📁 Directory Structure**
+
+```
+afl-ds/
+│
+├── data/
+│   ├── dfs/          # Raw DFS Australia fantasy point files
+│   ├── raw/          # Player summary, fixture, ceiling inputs
+│   └── processed/    # Final 2026 projection outputs
+│
+├── scripts/
+│   ├── fetch_dfs_data.py
+│   ├── build_player_summary.py
+│   ├── build_player_ceiling.py
+│   ├── build_fixture_2026.py
+│   ├── build_roundwise_projection.py
+│   └── build_roundwise_ceiling.py
+│
+└── README.md
+```
+
+---
+
+# **🚀 End-to-End Workflow**
+
+This section documents the exact steps to generate all projection files.
+
+---
+
+## **1. `fetch_dfs_data.py` – Download DFS Australia Fantasy Data**
+
+**Output Directory**
+
+```
+C:\Users\sunil\Projects\2026ws\afl-ds\data\dfs
+```
+
+**Creates**
+
+* `afl_results_{season}.xlsx`
+* `afl_fantasy_points_{season}_{team}.xlsx`
+
+**Purpose**
+
+* Scrapes DFS Australia for:
+
+  * Fixture & results
+  * Fantasy points for every player in every round
+* Produces source data used for averages and ceiling calculations.
+
+---
+
+## **2. `build_player_summary.py` – Player vs Opponent Averages**
+
+**Output File**
+
+```
+data/raw/afl_fantasy_player_summary.xlsx
+```
+
+**Reads Input Files**
+
+```
+data/dfs/afl_fantasy_points_*.xlsx
+```
+
+**Purpose**
+
+* For each player, compute **average score vs each AFL team**.
+* Produces the dataset used for base (average) projections.
+
+---
+
+## **3. `build_fixture_2026.py` – Download 2026 Fixture**
+
+**Output File**
+
+```
+data/raw/fixture_2026.xlsx
+```
+
+**Purpose**
+
+* Scrapes FootyWire to fetch the full 2026 AFL fixture.
+* Standardises team names to:
+
+  ```
+  ADE, BRL, CAR, COL, ESS, FRE, GCS, GEE, GWS,
+  HAW, MEL, NTH, PTA, RIC, STK, SYD, WBD, WCE
+  ```
+
+---
+
+## **4. (Optional) Re-run `build_player_summary.py`**
+
+If DFS data was refreshed or corrected.
+
+---
+
+## **5. `build_roundwise_projection.py` – Generate Round-by-Round Projections**
+
+**Output Directory**
+
+```
+data/processed/
+```
+
+**Output File**
+
+```
+afl_fantasy_player_summary_2026.xlsx
+```
+
+**Inputs**
+
+| File                              | Description                                            |
+| --------------------------------- | ------------------------------------------------------ |
+| `Positions2026withAvgs.xlsx`      | Master list of all 2026 players (DOB, price, averages) |
+| `afl_fantasy_player_summary.xlsx` | Player vs opponent averages                            |
+| `fixture_2026.xlsx`               | Round/Home/Away fixture                                |
+
+**Purpose**
+
+* Joins all three files.
+* Produces **projected fantasy score for each player for every round**.
+* This is the core projection output.
+
+---
+
+## **6. `build_player_ceiling.py` – Compute Ceiling Scores (Best 2 Scores)**
+
+**Output File**
+
+```
+data/raw/afl_fantasy_player_summary_ceiling.xlsx
+```
+
+**Purpose**
+
+* Similar to the average summary, **but uses best 2 scores vs each opponent**.
+* Produces a more optimistic "ceiling" model.
+
+---
+
+## **7. `build_roundwise_ceiling.py` – Generate Ceiling Projections**
+
+**Output Directory**
+
+```
+data/processed/
+```
+
+**Output File**
+
+```
+afl_fantasy_player_ceiling_2026.xlsx
+```
+
+**Inputs**
+
+* `Positions2026withAvgs.xlsx`
+* `afl_fantasy_player_summary_ceiling.xlsx`
+* `fixture_2026.xlsx`
+
+**Purpose**
+
+* Generates a round-by-round ceiling projection.
+* Useful for upside modelling & identifying breakout candidates.
+
+---
+
+# **📦 Final Output Files**
+
+| File                                   | Location          | Description                                |
+| -------------------------------------- | ----------------- | ------------------------------------------ |
+| `afl_fantasy_player_summary_2026.xlsx` | `data/processed/` | Round-by-round projections (average-based) |
+| `afl_fantasy_player_ceiling_2026.xlsx` | `data/processed/` | Round-by-round projections (ceiling-based) |
+
+---
+
+# **🧰 Technology Stack**
+
+* **Python 3.x**
+* `requests`
+* `pandas`
+* `openpyxl`
+* `beautifulsoup4` (for scraping)
+* `lxml`
+* Excel I/O for all input/output
+
+*No other languages are required — this is a Python-only project.*
+
+---
+
+# **📘 Notes**
+
+* `Positions2026withAvgs.xlsx` is downloaded from Patreon; it is the **master player dataset**.
+* Player DOB values should be cleaned to **DD/MM/YYYY only** (timestamps removed).
+* From columns **ADE onward**, all projection values are rounded **up to the next integer**.
+
+---
+
+If you want, I can also generate:
+
+✅ A **template repo structure**
+✅ A **sample Python virtual environment + requirements.txt**
+✅ A **GitHub Actions workflow** to automate the entire pipeline
+
+Just let me know!
